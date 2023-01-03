@@ -7,7 +7,13 @@ exports.createArtist = async (req, res) => {
 };
 
 exports.getArtists = async (req, res) => {
-  const result = await Artist.findById({});
+  const result = await Artist.find({});
+  res.send(result);
+};
+
+exports.getArtist = async (req, res) => {
+  const _id = req.params.id;
+  const result = await Artist.findById({ _id });
   res.send(result);
 };
 

@@ -18,18 +18,17 @@ exports.deletePlaylist = async (req, res) => {
 };
 
 exports.addtoplaylist = async (req, res) => {
-  const playlistId = req.params.playlist;
+  const playlistId = req.params.id;
   const songId = req.body.id;
 
   const playlist = await Playlist.findById(playlistId);
   playlist.songs.push(songId);
-
   await playlist.save();
-  res.send("updated");
+  res.send(playlist);
 };
 
 exports.getPlaylist = async (req, res) => {
   const _id = req.params.id;
-  const result = await Playlist.findById({ _id });
+  const result = await Playlist.findById({ _id }).populate('songs')
   res.send(result);
 };

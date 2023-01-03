@@ -9,8 +9,7 @@ const PlaylistSchema = new Schema({
   description: String,
   createdAt: { type: Date, default: Date.now() },
   isPrivate: Boolean,
-  songs: [{ type: Schema.Types.ObjectId, ref: "song", required: true }],
-  songs: [{ type: Schema.Types.ObjectId, ref: "user" }],
+  songs: [{ type: Schema.Types.ObjectId, ref: "Song" }],
 });
 
 const Playlist = model("Playlist", PlaylistSchema);
