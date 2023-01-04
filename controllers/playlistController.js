@@ -23,12 +23,13 @@ exports.addtoplaylist = async (req, res) => {
 
   const playlist = await Playlist.findById(playlistId);
   playlist.songs.push(songId);
+
   await playlist.save();
   res.send(playlist);
 };
 
 exports.getPlaylist = async (req, res) => {
   const _id = req.params.id;
-  const result = await Playlist.findById({ _id }).populate('songs')
+  const result = await Playlist.findById({ _id }).populate("songs");
   res.send(result);
 };
