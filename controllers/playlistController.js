@@ -7,6 +7,14 @@ exports.createPlaylist = async (req, res) => {
 };
 
 exports.getPlaylists = async (req, res) => {
+  const uid = req.query;
+  if (uid) {
+    console.log(uid.uid);
+    const ress = await Playlist.find({ description: uid.uid });
+    console.log(ress);
+    res.send(ress);
+    return;
+  }
   const result = await Playlist.find({});
   res.send(result);
 };
