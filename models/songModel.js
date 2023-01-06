@@ -8,7 +8,6 @@ const songScheme = new Schema({
   },
   artist: {
     type: String,
-    required: true,
   },
   duration: Number,
   createdAt: { type: Date, default: Date.now() },
