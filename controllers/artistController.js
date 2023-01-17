@@ -7,8 +7,12 @@ exports.createArtist = async (req, res) => {
 };
 
 exports.getArtists = async (req, res) => {
-  const result = await Artist.find({});
-  res.send(result);
+  try {
+    const result = await Artist.find({});
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 exports.getArtist = async (req, res) => {

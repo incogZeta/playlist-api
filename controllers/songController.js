@@ -8,8 +8,12 @@ exports.createSong = async (req, res) => {
 
 exports.getSongs = async (req, res) => {
   const { max } = req.query;
-  const result = await Song.find({}).limit(max);
-  res.send(result);
+  try {
+    const result = await Song.find({}).limit(max);
+    res.send(result);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 exports.getSong = async (req, res) => {
